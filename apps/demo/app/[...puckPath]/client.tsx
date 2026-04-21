@@ -37,7 +37,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
           onPublish={async (data) => {
             localStorage.setItem(key, JSON.stringify(data));
           }}
-          plugins={[headingAnalyzer]}
+          // plugins={[headingAnalyzer]}
           headerPath={path}
           iframe={{
             enabled: params.get("disableIframe") === "true" ? false : true,
@@ -74,6 +74,27 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
                 {children}
               </>
             ),
+
+  drawer: ({ children }) => (
+    <div style={{ height: "100%", display: "flex", flexDirection: "column", background: "#1e1e2e" }}>
+      <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700,
+        textTransform: "uppercase", letterSpacing: "0.08em",
+        borderBottom: "1px solid #313244", color: "#89b4fa" }}>
+        Blocks
+      </div>
+      <div style={{ flex: 1, overflowY: "auto" }}>{children}</div>
+    </div>
+  ),            
+            // This is where the "Layout" of the sidebars is defined
+            // fields: ({ children }) => (
+            //   <aside className="puck-sidebar-custom shadow-xl border-l border-slate-200">
+       
+            //     <div className="p-4 border-b bg-slate-50 font-bold text-xs">
+            //       REPORT SETTINGS
+            //     </div>
+            //     {children}
+            //   </aside>
+            // ),
           }}
           metadata={metadata}
         />
