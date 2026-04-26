@@ -48,8 +48,6 @@ export const conf: UserConfig = {
     Space,
     RichText,
   },
-
-
 };
 
 export const componentKey = Buffer.from(

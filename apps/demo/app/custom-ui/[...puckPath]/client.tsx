@@ -29,47 +29,7 @@ import {
   Type,
 } from "lucide-react";
 
-
-import { useCallback } from "react";
-
 const usePuck = createUsePuck<UserConfig>();
-
-
-
-const DebugButton = () => {
-  // 1. Get the getter function (this does NOT trigger re-renders on state change)
-  const getPuck = useGetPuck();
-
-  // 2. Use useCallback to memoize the click handler
-  const handleDebugClick = useCallback(() => {
-    // 3. Call the getter ONLY when the button is clicked to get fresh state
-    const { appState } = getPuck();
-    
-    const pageData = appState.data;
-    const selectedItem = appState.ui.itemSelector;
-
-    console.log("Current Page Content:", pageData);
-    console.log("Currently Selected ID:", selectedItem);
-    
-    alert(`You have ${pageData.content.length} components on this page!`);
-  }, [getPuck]); // getPuck is stable, so this function is created only once
-
-  return (
-    <button 
-      onClick={handleDebugClick}
-      style={{
-        padding: "8px 16px",
-        backgroundColor: "#007bff",
-        color: "white",
-        border: "none",
-        borderRadius: "4px",
-        cursor: "pointer"
-      }}
-    >
-      Log Page Stats
-    </button>
-  );
-};
 
 const CustomHeader = ({ onPublish }: { onPublish: (data: Data) => void }) => {
   const getPuck = useGetPuck();
@@ -109,12 +69,8 @@ const CustomHeader = ({ onPublish }: { onPublish: (data: Data) => void }) => {
             onClick={() => onPublish(getPuck().appState.data)}
             icon={<Globe size="14" />}
           >
-            My Publish
+            Publish
           </Button>
-
-          <DebugButton>
-            
-          </DebugButton>
         </div>
       </div>
     </header>

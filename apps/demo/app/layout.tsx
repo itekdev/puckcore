@@ -18,7 +18,6 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        <div> entry point page layout</div>
         <div>{children}</div>
       </body>
     </html>
